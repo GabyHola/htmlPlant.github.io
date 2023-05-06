@@ -86,7 +86,7 @@ $boton.addEventListener("click", function() {
     let foto = $canvas.toDataURL(); //Esta es la foto, en base 64
 
     let enlace = document.createElement('a'); // Crear un <a>
-    enlace.download = "foto_parzibyte.me.png";
+    enlace.download = "";
     enlace.href = foto;
     enlace.click();
     //Reanudar reproducción
