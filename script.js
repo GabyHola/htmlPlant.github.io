@@ -88,7 +88,7 @@ $boton.addEventListener("click", function() {
     let enlace = document.createElement('a'); // Crear un <a>
     enlace.download = "";
     enlace.href = foto;
-    enlace.click();
+    enlace.click('presentacion.mp4');
     //Reanudar reproducción
     $video.play();
 }); 

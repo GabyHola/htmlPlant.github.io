@@ -1,0 +1,35 @@
+body, html {
+    
+    background-color: rgba(1, 4, 6, 0.853);
+    height: 100%;
+   
+  }
+
+  h1 {
+    color: rgb(0, 0, 0);
+    text-align: center;
+     }
+     p {
+        color: rgb(248, 244, 244);
+        text-align: center;
+         }
+         h3 {
+            color: rgba(242, 232, 232, 0.992);
+            text-align: center;
+             }
+  .parallax {
+  
+    background-image: url("tecno2.png");
+        
+    min-height: 100%; 
+    
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .screen (max-device-width: 1366px)
+   
+    .parallax {
+      background-attachment: scroll;
+    }
