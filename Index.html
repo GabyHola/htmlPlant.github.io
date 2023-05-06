@@ -34,7 +34,7 @@
 <script src="script.js">
 	const tieneSoporteUserMedia = () =>
     !!(navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia)
-const _getUserMedia = (...arguments) =>
+const _getUserMedia = ( {Audio:false, video: true}) 
     (navigator.getUserMedia || (navigator.mozGetUserMedia || navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.msGetUserMedia).apply(navigator, arguments);
 
 const mostrarStream = idDeDispositivo => {
