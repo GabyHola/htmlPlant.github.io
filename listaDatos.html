@@ -73,15 +73,8 @@
           <div class="col-md-12">
             <div class="site-branding">
             
-            <h1>Buscador de datos</h1>
-            <div class="form-container">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.605423098365!2d-122.41662228476252!3d37.785834240381775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808c05a29a27%3A0xe891f20a9b9c6b03!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1620387915089!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-              <div class="form-group">
-                <label class="form-label" for="busqueda">Buscar:</label>
-                <input type="text" class="form-control" id="busqueda">
-              </div>
-              <button class="btn btn-buscar" id="boton-buscar">Buscar</button>
-            </div>
+            <h1>Listar los datos</h1>
+            
             <div class="resultados-container">
               <h2 class="resultados-title">Resultados:</h2>
               <div class="row" id="resultados"></div>
@@ -91,49 +84,20 @@
       </div>
 
   <script>
-    // Función para buscar en los datos
-    function buscar(query, datos) {
-      var resultados = [];
-      var regex = new RegExp(query, "i"); 
-      for (var i = 0; i < datos.length; i++) {
-        var dato = datos[i];
-        if (dato.hasOwnProperty('comarca') && regex.test(dato.comarca)) {
-            resultados.push(dato);
-        }
-      }
-      return resultados;
-    }
+   
     
-    // Función para mostrar los resultados
-    function mostrarResultados(resultados) {
-  var resultadosHTML = "";
-  if (resultados.length === 0) {
-    resultadosHTML = "<p>No se encontraron resultados.</p>";
-  } else {
-    for (var i = 0; i < resultados.length; i++) {
-      var resultado = resultados[i];
-      resultadosHTML += '<div class="col-md-4 mb-4"><div class="card"><img src=Albacete.png class="card-img-top"><div class="card-body"><h5 class="card-title">' 
-        + resultado.comarca + resultado.comunidadesAutonomas+ '</h5><p class="card-text">' + resultado.provincia + '</p></div></div></div>';
-    }
-  }
-  document.getElementById("resultados").innerHTML = resultadosHTML;
-}
-    
-    // Manejar el evento de clic en el botón de búsqueda
-    document.getElementById("boton-buscar").addEventListener("click", function() {
       var query = document.getElementById("busqueda").value;
       var url = "http://10.12.200.103:8080/bd/conexion.php";
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
           var datos = JSON.parse(xhr.responseText);
-          var resultados = buscar(query, datos);
-          mostrarResultados(resultados);
+          mostrarResultados(datos);
         }
       };
       xhr.open("GET", url, true);
       xhr.send();
-    });
+
   </script>
 </body>
 </html>
