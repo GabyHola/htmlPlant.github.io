@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Buscador de datos - Temática medio ambiente flat</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #F5F5F5;
+      font-family: 'Roboto', sans-serif;
+    }
+    h1 {
+      font-size: 3rem;
+      color: #1B5E20;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .logo {
+      height: 3rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-container {
+      background-color: #FFF;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .form-label {
+      font-size: 1.2rem;
+      color: #1B5E20;
+    }
+    .form-control {
+      font-size: 1.2rem;
+      color: #333;
+      border-color: #1B5E20;
+    }
+    .btn-buscar {
+      font-size: 1.2rem;
+      background-color: #1B5E20;
+      color: #FFF;
+      border-color: #1B5E20;
+    }
+    .btn-buscar:hover {
+      background-color: #FFF;
+      color: #1B5E20;
+    }
+    .resultados-container {
+      margin-top: 2rem;
+      padding: 1rem;
+      background-color: #FFF;
+      border-radius: 1rem;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .resultados-title {
+      font-size: 1.5rem;
+      color: #1B5E20;
+      margin-bottom: 1rem;
+    }
+    .resultados-list {
+      font-size: 1.2rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <img class="logo" src="logo.png" alt="Logo">
+            <h1>Buscador de datos</h1>
+            <div class="form-container">
+              <div class="form-group">
+                <label class="form-label" for="busqueda">Buscar:</label>
+                <input type="text" class="form-control" id="busqueda">
+              </div>
+              <button class="btn btn-buscar" id="boton-buscar">Buscar</button>
+            </div>
+            <div class="resultados-container">
+              <h2 class="resultados-title">Resultados:</h2>
+              <div class="row" id="resultados"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <script>
+    // Función para buscar en los datos
+    function buscar(query, datos) {
+      var resultados = [];
+      var regex = new RegExp(query, "i"); 
+      for (var i = 0; i < datos.length; i++) {
+        var dato = datos[i];
+        if (dato.hasOwnProperty('comarca') && regex.test(dato.comarca)) {
+            resultados.push(dato);
+        }
+      }
+      return resultados;
+    }
+    
+    // Función para mostrar los resultados
+    function mostrarResultados(resultados) {
+  var resultadosHTML = "";
+  if (resultados.length === 0) {
+    resultadosHTML = "<p>No se encontraron resultados.</p>";
+  } else {
+    for (var i = 0; i < resultados.length; i++) {
+      var resultado = resultados[i];
+      resultadosHTML += '<div class="col-md-4 mb-4"><div class="card"><img src=Albacete.png class="card-img-top"><div class="card-body"><h5 class="card-title">' 
+        + resultado.comarca + resultado.comunidadesAutonomas+ '</h5><p class="card-text">' + resultado.provincia + '</p></div></div></div>';
+    }
+  }
+  document.getElementById("resultados").innerHTML = resultadosHTML;
+}
+    
+    // Manejar el evento de clic en el botón de búsqueda
+    document.getElementById("boton-buscar").addEventListener("click", function() {
+      var query = document.getElementById("busqueda").value;
+      var url = "http://10.12.200.103:8080/bd/conexion.php";
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var datos = JSON.parse(xhr.responseText);
+          var resultados = buscar(query, datos);
+          mostrarResultados(resultados);
+        }
+      };
+      xhr.open("GET", url, true);
+      xhr.send();
+    });
+  </script>
+</body>
+</html>
