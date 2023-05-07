@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario de Registro</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+          background-color: #d1dbdb;
+          font-family: 'Roboto', sans-serif;
+        }
+        h1 {
+          font-size: 3rem;
+          color: #1B5E20;
+          text-align: center;
+          margin-top: 2rem;
+        }
+        .logo {
+          height: 10rem;
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+        .form-container {
+          background-color: #FFF;
+          padding: 2rem;
+          border-radius: 1rem;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .form-label {
+          font-size: 1.2rem;
+          color: #1B5E20;
+        }
+        .form-control {
+          font-size: 1.2rem;
+          color: #333;
+          border-color: #1B5E20;
+        }
+        .btn-buscar {
+          font-size: 1.2rem;
+          background-color: #1B5E20;
+          color: #FFF;
+          border-color: #1B5E20;
+        }
+        .btn-buscar:hover {
+          background-color: #FFF;
+          color: #1B5E20;
+        }
+        .resultados-container {
+          margin-top: 2rem;
+          padding: 1rem;
+          background-color: #FFF;
+          border-radius: 1rem;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .resultados-title {
+          font-size: 1.5rem;
+          color: #1B5E20;
+          margin-bottom: 1rem;
+        }
+        .resultados-list {
+          font-size: 1.2rem;
+          color: #333;
+        }
+        .checkbox-columns {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox-columns label {
+  width: 50%;
+}
+      </style>
+</head>
+<body>
+    <header style="background-color: #1d4948; color: #fff; ">
+        <img src="logor.png" alt="Logo de mi sitio web" style="width: 300px;">
+        <a href="inicio.html" style="color: #fff; text-decoration: none; font-size: 18px; margin-left: 20px;">Inicio</a>
+      </header>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Formulario de Registro</h1>
+				<form class="form-container">
+					<div class="form-group">
+						<label for="nombre">Comarca:</label>
+						<input type="text" class="form-control" id="nombre" placeholder="Ingrese el Comarca">
+					</div>
+					<div class="form-group">
+						<label for="apellido">Comunidad Autonoma:</label>
+						<input type="text" class="form-control" id="apellido" placeholder="Ingrese la Comunidad Autonoma">
+					</div>
+					<div class="form-group">
+						<label for="cultivo">Cultivo:</label><br>
+                        <div class="checkbox-columns">
+                            <label><input type="checkbox" name="cultivo[]" value="trigo">Barbechos</label>
+                            <label><input type="checkbox" name="cultivo[]" value="maiz">2 Pasto intensivo</label>
+                            <label><input type="checkbox" name="cultivo[]" value="cebada">1 Pasto extensivo</label>
+                            <label><input type="checkbox" name="cultivo[]" value="arroz">Hortalizas</label>
+                            <label><input type="checkbox" name="cultivo[]" value="algodon">1 Cereales para grano</label>
+                            <label><input type="checkbox" name="cultivo[]" value="cafe">7 Olivar</label>
+                            <label><input type="checkbox" name="cultivo[]" value="frutales">9 Viveros</label>
+                            <label><input type="checkbox" name="cultivo[]" value="hortalizas">5 Cultivos industriales</label>
+                            <label><input type="checkbox" name="cultivo[]" value="pastos">1 Pasto extensivo</label>
+                          </div>
+					</div>
+					<div class="form-group">
+						<label for="email">Permanota:</label>
+						<input type="text" class="form-control" id="email" placeholder="Ingrese la permanota">
+					</div>
+					<div class="form-group">
+						<label for="email">Provincia:</label>
+						<input type="text" class="form-control" id="email" placeholder="Ingrese la provincia">
+					</div>
+					<div class="form-group">
+						<label for="email">SAU:</label>
+						<input type="text" class="form-control" id="email" placeholder="Ingrese su Sau">
+					</div>
+					<div class="form-group">
+						<label for="contraseña">Superficie HA:</label>
+						<input type="password" class="form-control" id="contraseña" placeholder="Ingrese su contraseña">
+					</div>
+					<button type="submit" class="btn btn-primary">Registrarse</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
