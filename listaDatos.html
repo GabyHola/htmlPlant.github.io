@@ -76,7 +76,6 @@
             <h1>Listar los datos</h1>
             
             <div class="resultados-container">
-              <h2 class="resultados-title">Resultados:</h2>
               <div class="row" id="resultados"></div>
             </div>
           </div>
@@ -85,8 +84,6 @@
 
   <script>
    
-    
-      var query = document.getElementById("busqueda").value;
       var url = "http://10.12.200.103:8080/bd/conexion.php";
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
@@ -97,7 +94,19 @@
       };
       xhr.open("GET", url, true);
       xhr.send();
-
+      function mostrarResultados(resultados) {
+  var resultadosHTML = "";
+  if (resultados.length === 0) {
+    resultadosHTML = "<p>No se encontraron resultados.</p>";
+  } else {
+    for (var i = 0; i < resultados.length; i++) {
+      var resultado = resultados[i];
+      resultadosHTML += '<div class="col-md-4 mb-4"><div class="card"><img src=campo1.png class="card-img-top"><div class="card-body"><h5 class="card-title">' 
+        + resultado.comarca + resultado.comunidadesAutonomas+ '</h5><p class="card-text">' + resultado.provincia + '</p></div></div></div>';
+    }
+  }
+  document.getElementById("resultados").innerHTML = resultadosHTML;
+}
   </script>
 </body>
 </html>
